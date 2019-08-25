@@ -1,2 +1,2 @@
 # Ferdinand-the-Bull
-A robotic cow toy that learns to walk with Reinforcement Learning
+A robotic AI cow that learns to walk forward with Reinforcement Learning
