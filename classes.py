@@ -12,7 +12,6 @@ class Cow():
 
     def get_action(self, qtable):
         action = [0,0,0] # Default action, where, respectively, the values indicate which direction to increment the right, left, and hips.
-        # print("Action done been gotten.")
 
         right = self.right + 2 #Adjust index value from absolute leg position (-2 based) to 0 based
         left = self.left + 2
@@ -23,11 +22,26 @@ class Cow():
         return action
 
     def act(self, action):
-        print()
-        print("Right moving: ", action[0])
-        print("Left moving: ", action[1])
-        print("Hips moving: ", action[2])
+        self.right += action[0]
+        self.left += action[1]
+        self.hips += action[2]
+        
+        #No correct for overrotation
+        if self.right == 3: 
+            self.right = 2
+        if self.right == -3: 
+            self.right = -2
+        if self.left == 3: 
+            self.left = 2
+        if self.left == -3: 
+            self.left = -2
+        if self.hips == 2: 
+            self.hips = 1
+        if self.hips == -2: 
+            self.hips = -1
+
+
 
     def evaluate(self):
-        print("Ah yes, Ferdinand is satisfied with his personal self evaluation.")
+        print()
 

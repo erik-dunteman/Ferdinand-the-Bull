@@ -7,9 +7,10 @@ qtable = init_Qtable()
 
 i = 0
 while i<10:
+    print("Position", Ferdinand.right, Ferdinand.left, Ferdinand.hips)
     action = Ferdinand.get_action(qtable)
+    print("Action" , action)
     Ferdinand.act(action)
     
     Ferdinand.evaluate()
-    # Ferdinand.act(action)
     i+=1

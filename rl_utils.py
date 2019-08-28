@@ -21,13 +21,24 @@ def init_Qtable():
 
 def get_actionspace(qtable, right, left, hips):
     actionspace = qtable[right][left][hips]
-    actionspace[2][1][0] = 10
     return actionspace
 
 def get_action_from_actionspace(actionspace):
     maxindex = np.unravel_index(actionspace.argmax(), actionspace.shape)
+
+    # Randomize the choice if multiple max values (such as when it is initialized with 0s)
+    contenders = []
+    for i in range(3):
+        for j in range(3):
+            for k in range(3):
+                if actionspace[maxindex[0]][maxindex[1]][maxindex[2]] == actionspace[i][j][k]:
+                    # Then this argmax is a contender
+                    contenders.append([i, j, k])
+    rand_choice = random.randint(0,len(contenders)-1)
+    print(len(contenders), "Possible Options")
+    index_set = contenders[rand_choice]
+
     action = []
-    for val in maxindex:
+    for val in index_set:
         action.append(val-1)
     return action
-
